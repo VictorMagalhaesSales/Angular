@@ -1,0 +1,13 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="nav navbar-nav">
+    <a class="nav-item nav-link" [class.active]="ativado == 'home'" (click)="mudou('home')">Home</a>
+    <a class="nav-item nav-link" [class.active]="ativado == 'fotos'" (click)="mudou('fotos')">Fotos</a>
+    <a class="nav-item nav-link" [class.active]="ativado == 'videos'" (click)="mudou('videos')">Videos</a>
+  </div>
+</nav>
+
+<div class="container" [ngSwitch]="ativado">
+    <p *ngSwitchCase="'home'">Home</p> 
+    <p *ngSwitchCase="'fotos'">Fotos</p> 
+    <p *ngSwitchCase="'videos'">Videos</p> 
+</div>

@@ -1,0 +1,9 @@
+body {
+    padding: 50px;
+}
+
+hr {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    background-color: orange;
+}

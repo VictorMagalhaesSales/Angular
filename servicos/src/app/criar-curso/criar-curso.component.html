@@ -1,0 +1,16 @@
+<br>
+<input type="text" class="form-control" #valor placeholder="Clique no botão para salvar">
+<br>
+<button class="btn btn-danger" (click)="addCurso(valor.value)">Salvar curso</button>
+<br><br>
+<input type="text" class="form-control" (keyup.enter)="addCurso($event.target.value)" placeholder="Aperte 'enter' para salvar">
+<br><br>
+<h3>Lista de cursos</h3>
+
+<ul class="list-group list-group-flush">
+  <li *ngFor="let curso of cursos" class="list-group-item">
+    {{ curso }}
+  </li>
+</ul>
+
+<app-receber-curso-criado></app-receber-curso-criado>

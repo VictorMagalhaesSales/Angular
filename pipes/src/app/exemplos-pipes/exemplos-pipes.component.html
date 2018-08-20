@@ -1,0 +1,43 @@
+<p>Título: {{ livro.titulo | uppercase | lowercase | camelCase}}</p>
+<p>Estrelas: {{ livro.rating | number:'2.1-2' }}</p>
+<p>Páginas: {{ livro.numeroPaginas | number }}</p>
+<p>Preço: {{ livro.preco | currency:'BRL' }}</p>
+<p>Data Lançamento: {{ livro.dataLancamento | date:'dd-MMM-yyyy' }}</p>
+<p>Url: {{ livro.url }}</p>
+<br>
+<p>Livro: {{ livro | json}}</p>
+
+<input type="text" [(ngModel)]="filtro" class="form-control" placeholder="Pesquisar curso">
+<br>
+<input type="text" #novoValor class="form-control" placeholder="Adicionar curso">
+<button (click)="addCurso(novoValor.value)" class="btn"> Adicionar curso</button>
+
+
+<h5>Pipe puro</h5>
+
+<ul>
+    <li *ngFor="let liv of livros | filtroArray:filtro">
+        {{ liv }}
+    </li>
+</ul>
+
+
+<h5>Pipe impuro</h5>
+
+<ul>
+    <li *ngFor="let liv of livros | filtroArrayImpuro:filtro">
+        {{ liv }}
+    </li>
+</ul>
+
+<h5>Maneira correta de usar filtros no projetos</h5>
+
+<ul>
+    <li *ngFor="let liv of obterCursos()">
+        {{ liv }}
+    </li>
+</ul>
+
+<!-- ASSIM NÃO SERIA O CORRETO, POIS PODERIA OCORRER UM BUG ENQUANTO CARREGA TOTALMENTE <p>{{ valorAsync | json}}</p> -->
+<p>{{ valorAsync | async}}</p>
+<p>{{ valorAsync2 | async}}</p>

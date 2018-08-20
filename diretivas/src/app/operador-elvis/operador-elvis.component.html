@@ -1,0 +1,7 @@
+<p>Descrição: {{ tarefa.desc }}</p>
+
+<!-- <p>Responsável: {{ tarefa.responsavel.nome }}</p> <<< DARIA ERRO -->
+<!-- <p>Responsável: {{ tarefa.responsavel != null ? tarefa.responsavel.nome : '' }}</p> << NÃO DARIA ERRO -->
+
+<!-- Operador Elvis faz a mesma coisa -->
+<p>Responsável: {{ tarefa.responsavel?.nome }}</p>

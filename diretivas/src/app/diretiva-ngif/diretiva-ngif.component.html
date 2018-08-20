@@ -1,0 +1,8 @@
+<p *ngIf="mostrarCursos" >Há cursos</p>
+<p *ngIf="!mostrarCursos" >Não há cursos</p>
+
+<button class="btn btn-primary" (click)="mostrarExcluirCurso()">Mostrar ou excluir curso</button>
+
+<p [hidden]="!mostrarCursos">Há cursos</p>
+<p [hidden]="mostrarCursos">Não há cursos</p>
+
