@@ -1,0 +1,51 @@
+
+<div>
+  <!-- ===================----- Event Binding -----=================== -->
+  <h3>==-- Event Binding --==</h3>
+  <button (click)="acao();" class="btn btn-primary">Me clique</button><br><br>
+  <input type="text" class="form-control" 
+  (keyup)="onKeyUp($event)" 
+  (keyup.enter)="salvarValor($event)" 
+  (blur)="perdeFoco(campo.value)"
+  #campo />
+
+  <p>{{ valorAtual }}</p>
+  <p>{{ valorSalvo }}</p>
+
+  <p
+    class="alert"
+    (mouseover)="onMouseOverOut()"
+    (mouseout)="onMouseOverOut()"
+    [class.alert-primary]="mouseTeste"
+  >Passe o mouse sobre mim!</p>
+</div>
+<br><hr><br>
+
+<div>
+  <!-- ===================----- Two-way data binding -----=================== -->
+  <h3>==-- Two-way data binding --==</h3>
+
+  <input type="text" class="form-control" [(ngModel)]="twoWay" />
+  <p>Você digitou: {{ twoWay }}</p>
+  
+  <div class="row">
+    <input type="text" class="form-control offset-md-1 col-md-2" [(ngModel)]="pessoa.nome">  
+    <input type="text" class="form-control col-md-2" [(ngModel)]="pessoa.idade">
+  </div>
+  <p>Olá, me chamo {{ pessoa.nome }} e tenho {{ pessoa.idade }} anos.</p>
+</div>
+<br><hr><br>
+
+<div>
+    <!-- ===================----- Input Property -----=================== -->
+    <h3>==-- Input Property --==</h3>
+    
+    <app-input-property [nome]="nomeDoCurso"></app-input-property>
+</div>
+<br><hr><br>
+
+<div>
+    <!-- ===================----- Output Property -----=================== -->
+    <h3>==-- Output Property --==</h3>
+  <app-output-property [contador]="contadorInicial"></app-output-property>
+</div>
