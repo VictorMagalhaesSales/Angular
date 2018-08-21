@@ -15,7 +15,7 @@ export class AuthService {
 
   fazerLogin(usuario: Usuario){
     if(usuario.nome === "usuario@gmail.com" && usuario.senha === "123"){
-      this.usuarioAutenticado = false;
+      this.usuarioAutenticado = true;
       this.router.navigate(['/']);
       this.mostrarMenu.emit(true);
     }else{
