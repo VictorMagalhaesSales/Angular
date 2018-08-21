@@ -1,3 +1,35 @@
-<p>
-  aluno-form works!
-</p>
+<div class="row">
+  <form class="col s12">
+
+    <h4>Cadastrar/Editar aluno</h4>
+
+    <div class="row">
+      <div class="input-field">
+        <input   id="id" name="id" type="text" class="validate" [(ngModel)]="aluno.id" disabled>
+        <label for="id" class="active">ID</label>
+        <span class="helper-text" data-error="Incorreto" data-success="Correto">Digite o ID do aluno</span>
+      </div>
+    </div>  
+
+    <div class="row">
+      <div class="input-field">
+        <input id="nome" name="nome" type="text" class="validate" [(ngModel)]="aluno.nome">
+        <label for="nome" class="active">Nome</label>
+        <span class="helper-text" data-error="Incorreto" data-success="Correto">Digite o nome do aluno</span>
+      </div>
+    </div>  
+
+    <div class="row">
+      <div class="input-field">
+        <input id="email" name="email" type="text" class="validate" [(ngModel)]="aluno.email">
+        <label for="email" class="active">Email</label>
+        <span class="helper-text" data-error="Incorreto" data-success="Correto">Digite o email do aluno</span>
+      </div>
+    </div>
+    
+    <!-- <div class="row">
+      <button class="waves-effect waves-light btn" routerLink="">Cadastrar aluno</button>
+    </div> -->
+
+  </form>
+</div>

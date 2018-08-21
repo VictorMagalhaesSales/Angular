@@ -1,3 +1,4 @@
+import { FormsModule } from '@angular/forms';
 import { AlunosModule } from './alunos/alunos.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -18,7 +19,8 @@ import { AppRoutingModule } from './app.routing.module';
     BrowserModule,
     AppRoutingModule,
     CursoModule,
-    AlunosModule
+    AlunosModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,6 +1,15 @@
-<h4>Detalhes do aluno</h4>
-<p>
-  ID: {{ aluno.id }}<br>
-  Nome: {{ aluno.nome }}<br>
-  Email: {{ aluno.email }}<br>
-</p>
+<div class="row">
+    <div class="col s12">
+      <div class="card blue accent-3">
+        <div class="card-content white-text">
+          <span class="card-title">Detalhes do aluno</span>
+          <p>ID: {{ aluno.id }}<br>
+            Nome: {{ aluno.nome }}<br>
+            Email: {{ aluno.email }}</p>
+        </div>
+        <div class="card-action">
+          <button (click)="editarContato()" class="waves-effect waves-light btn">Editar aluno</button>
+        </div>
+      </div>
+    </div>
+  </div>
