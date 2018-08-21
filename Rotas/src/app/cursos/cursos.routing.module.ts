@@ -5,9 +5,9 @@ import { Routes, RouterModule } from '@angular/router';
 import { CursoDetalheComponent } from './curso-detalhe/curso-detalhe.component';
 
 const CursosRoutes: Routes = [
-    { path: 'cursos', component: CursosComponent },
-    { path: 'curso/:id', component: CursoDetalheComponent },
-    { path: 'naoEncontrado', component: CursoNaoEncontradoComponent },
+    { path: '', component: CursosComponent },
+    { path: 'cursos/naoEncontrado', component: CursoNaoEncontradoComponent },
+    { path: 'cursos/:id', component: CursoDetalheComponent },
 ]
 
 

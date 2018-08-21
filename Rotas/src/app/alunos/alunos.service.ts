@@ -14,9 +14,6 @@ export class AlunosService {
 
   getAlunos(){
     return this.alunos;
-    for(let i=0; i<this.alunos.length; i++){
-       console.log(this.alunos[i].id);
-    }
   }
 
   getAluno(id: number){
