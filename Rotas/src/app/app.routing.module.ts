@@ -1,4 +1,4 @@
-import { AlunosGuard } from './guards/alunos.guard';
+import { AlunosGuard } from './alunos/alunos.guard';
 import { CursosGuard } from './guards/cursos.guard';
 import { NgModule } from "@angular/core";
 import { LoginComponent } from './login/login.component';
@@ -12,8 +12,7 @@ const AppRoutes: Routes = [
         canActivateChild: [CursosGuard]
     },
     { path: 'alunos', loadChildren: 'src/app/alunos/alunos.module#AlunosModule',
-        canActivate: [AuthGuard],
-        canActivateChild: [AlunosGuard]
+        canActivate: [AuthGuard]
     },
     { path: 'login', component: LoginComponent
     },
