@@ -1,5 +1,3 @@
-
-
 <div class="row">
   <form class="col s12">
 
@@ -7,7 +5,7 @@
 
     <div class="row">
       <div class="input-field">
-        <input   id="Login" name="Login" type="text" class="validate">
+        <input   id="Login" name="Login" type="text" class="validate" [(ngModel)]="usuario.nome">
         <label for="Login" class="active">Login</label>
         <span class="helper-text" data-error="Incorreto" data-success="Correto">Digite seu login</span>
       </div>
@@ -15,14 +13,14 @@
 
     <div class="row">
       <div class="input-field">
-        <input id="Senha" name="Senha" type="password" class="validate" [(ngModel)]="aluno.nome">
+        <input id="Senha" name="Senha" type="password" class="validate" [(ngModel)]="usuario.senha">
         <label for="Senha" class="active">Senha</label> 
-        <span class="helper-text" data-error="Incorreto" data-success="Correto">Digite o nome do aluno</span>
+        <span class="helper-text" data-error="Incorreto" data-success="Correto">Digite sua senha</span>
       </div>
     </div> 
     
     <div class="row">
-      <button class="waves-effect waves-light btn" routerLink=""><i class="material-icons right">send</i>Logar</button>
+      <button class="waves-effect waves-light btn" (click)="fazerLogin()"><i class="material-icons right">send</i>Logar</button>
     </div>
 
   </form>

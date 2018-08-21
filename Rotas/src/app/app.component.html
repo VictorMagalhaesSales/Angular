@@ -1,5 +1,5 @@
-<nav>
-    <div class="nav-wrapper">
+<nav *ngIf="mostrarMenu" >
+    <div class="nav-wrapper  blue">
       <a routerLink="" class="brand-logo right">Rotas</a>
       <ul id="nav-mobile" class="hide-on-med-and-down left">
         <li routerLinkActive="active"><a routerLink="login">Login</a></li>
