@@ -20,8 +20,12 @@ export class TemplateFormComponent implements OnInit {
   }
 
   onSubmit(form){
-    console.log(form.value);
-    console.log(this.usuario);
+    // console.log(form.value);
+    // console.log(this.usuario);
+
+    this.http.post('https://httpbin.org/post', JSON.stringify(form.value))
+      .map(res => res)
+      .subscribe(dados => console.log(dados));
   }
 
   consultaCEP(cep, form){
