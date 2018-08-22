@@ -5,24 +5,33 @@
 
     <div class="row">
       <div class="input-field">
-        <input #nome id="nome" name="nome" type="text" class="validate" [(ngModel)]="usuario.nome" required pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?">
+        <input #nome="ngModel" id="nome" name="nome" type="text" class="validate" [(ngModel)]="usuario.nome" required>
         <label for="nome">Nome</label> 
         <span class="helper-text" data-error="Incorreto" data-success="Correto">Digite o nome do aluno</span>
       </div>
-      <div>
-        {{ nome.className }}
+      <div *ngIf="!nome.valid && nome.touched" >
+        <!-- {{ nome.className }} -->
+        <!-- OUTRA MANEIRA DE APRESENTAR OS ERROS. EX: 'NÃO DEIXE O FOMULÁRIO EM BRANCO'  -->
       </div>
     </div>  
 
     <div class="row">
       <div class="input-field">
-        <input id="email" name="email" type="text" class="validate" [(ngModel)]="usuario.email" required pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?">
+        <input #email="ngModel" id="email" name="email" type="text" class="validate" [(ngModel)]="usuario.email" required pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?">
         <label for="email">Email</label>
         <span class="helper-text" data-error="Incorreto" data-success="Correto">Digite o email do aluno</span>
       </div>
+      <div *ngIf="!email.valid && email.touched" >
+        <!-- {{ nome.className }} -->
+        <!-- OUTRA MANEIRA DE APRESENTAR OS ERROS. EX: 'NÃO DEIXE O FOMULÁRIO EM BRANCO'  -->
+      </div>
     </div>
     
-    <button type="submit" class="waves-effect waves-light btn"><i class="material-icons right">send</i>Enviar</button>
+    <button [disabled]="!f.valid" type="submit" class="waves-effect waves-light btn"><i class="material-icons right">send</i>Enviar</button>
 
   </form>
-</div>  
+</div>
+
+<div class="container">
+  <app-form-debug [form]="f"></app-form-debug>
+</div>
