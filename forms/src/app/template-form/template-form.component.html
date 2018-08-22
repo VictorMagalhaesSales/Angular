@@ -1,34 +1,82 @@
-<div class="row">
-  <form class="col s4 offset-s4" #f="ngForm" (ngSubmit)="onSubmit(f)">
+<div class="row container">
+  <form #f="ngForm" (ngSubmit)="onSubmit(f)">
 
     <h4>Formulário - Template</h4>
 
-    <div class="row">
-      <div class="input-field">
-        <input #nome="ngModel" id="nome" name="nome" type="text" class="validate" [(ngModel)]="usuario.nome" required>
-        <label for="nome">Nome</label> 
-        <span class="helper-text" data-error="Incorreto" data-success="Correto">Digite o nome do aluno</span>
-      </div>
-      <div *ngIf="!nome.valid && nome.touched" >
-        <!-- {{ nome.className }} -->
-        <!-- OUTRA MANEIRA DE APRESENTAR OS ERROS. EX: 'NÃO DEIXE O FOMULÁRIO EM BRANCO'  -->
-      </div>
+    <div class="row col s12">
+        <div class="input-field">
+          <input id="nome" name="nome" type="text" class="validate" required ngModel #nome="ngModel">
+          <label for="nome">Nome</label>
+          <app-campo-control-erro msg="Digite o seu nome"></app-campo-control-erro>
+        </div>
     </div>  
 
-    <div class="row">
-      <div class="input-field">
-        <input #email="ngModel" id="email" name="email" type="text" class="validate" [(ngModel)]="usuario.email" required pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?">
-        <label for="email">Email</label>
-        <span class="helper-text" data-error="Incorreto" data-success="Correto">Digite o email do aluno</span>
-      </div>
-      <div *ngIf="!email.valid && email.touched" >
-        <!-- {{ nome.className }} -->
-        <!-- OUTRA MANEIRA DE APRESENTAR OS ERROS. EX: 'NÃO DEIXE O FOMULÁRIO EM BRANCO'  -->
-      </div>
+    <div class="row col s12">
+        <div class="input-field">
+          <input id="email" name="email" type="text" class="validate" required ngModel #email="ngModel" pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?">
+          <label for="email">Email</label>
+          <app-campo-control-erro msg="Digite o seu email"></app-campo-control-erro>
+        </div>
     </div>
-    
-    <button [disabled]="!f.valid" type="submit" class="waves-effect waves-light btn"><i class="material-icons right">send</i>Enviar</button>
 
+    <div ngModelGroup="endereco">
+      <div class="row">
+        <div class="col s3">
+          <div class="input-field">
+            <input (blur)="consultaCEP($event.target.value, f)" type="text" name="cep" id="cep" required ngModel #cep="ngModel">
+            <label for="cep">CEP</label>
+            <app-campo-control-erro msg="Digite o CEP da sua rua" erro="CEP inválido"></app-campo-control-erro>
+          </div>
+        </div>
+
+        <div class="col s3">
+          <div class="input-field">
+            <input type="text" name="numero" id="numero" required ngModel #numero="ngModel">
+            <label for="numero">Número</label>
+            <app-campo-control-erro msg="Digite o CEP da sua rua" erro="Número inválido"></app-campo-control-erro>
+          </div>
+        </div>
+
+        <div class="col s6">
+          <div class="input-field">
+            <input type="text" name="complemento" id="complemento" required ngModel #complemento="ngModel">
+            <label for="complemento">Complemento</label>
+            <app-campo-control-erro msg="Complemento da sua residência"></app-campo-control-erro>
+          </div>
+        </div>
+      </div> 
+
+      <div class="row col s12">
+        <div class="input-field">
+          <input type="text" name="rua" id="rua" required readonly placeholder="Rua" ngModel #rua="ngModel">
+        </div>
+      </div>
+
+      <div class="row">
+
+        <div class="col s5">
+          <div class="input-field">
+            <input type="text" name="bairro" id="bairro" required readonly placeholder="Bairro" ngModel #bairro="ngModel">
+          </div>
+        </div>
+
+        <div class="col s4">
+          <div class="input-field">
+            <input type="text" name="cidade" id="cidade" required readonly placeholder="Cidade" ngModel #cidade="ngModel">
+          </div>
+        </div>
+
+        <div class="col s3">
+          <div class="input-field">
+            <input type="text" name="estado" id="estado" required readonly placeholder="Estado" ngModel #estado="ngModel">
+          </div>
+        </div>
+
+      </div> 
+
+    </div>
+
+    <button [disabled]="!f.valid" type="submit" class="waves-effect waves-light btn"><i class="material-icons right">send</i>Enviar</button>
   </form>
 </div>
 
