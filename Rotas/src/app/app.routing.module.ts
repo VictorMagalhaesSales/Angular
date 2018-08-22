@@ -1,3 +1,4 @@
+import { PaginaNaoEncontradaComponent } from './pagina-nao-encontrada/pagina-nao-encontrada.component';
 import { AlunosGuard } from './alunos/alunos.guard';
 import { CursosGuard } from './guards/cursos.guard';
 import { NgModule } from "@angular/core";
@@ -18,14 +19,16 @@ const AppRoutes: Routes = [
     },
     { path: 'login', component: LoginComponent
     },
-    { path: '', component: HomeComponent,
+    { path: 'home', component: HomeComponent,
         canActivate: [AuthGuard]
-    }
+    },
+    { path: '', redirectTo: '/home', pathMatch: 'full' },
+    { path: '**', component: PaginaNaoEncontradaComponent }
 ]
 
 
 @NgModule({
-    imports: [RouterModule.forRoot(AppRoutes)],
+    imports: [RouterModule.forRoot(AppRoutes, {useHash: true})],
     exports: [RouterModule]
 })
 export class AppRoutingModule{}
