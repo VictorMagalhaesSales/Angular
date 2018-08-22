@@ -1,3 +1,28 @@
-<p>
-  template-form works!
-</p>
+<div class="row">
+  <form class="col s4 offset-s4" #f="ngForm" (ngSubmit)="onSubmit(f)">
+
+    <h4>Formulário - Template</h4>
+
+    <div class="row">
+      <div class="input-field">
+        <input #nome id="nome" name="nome" type="text" class="validate" [(ngModel)]="usuario.nome" required pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?">
+        <label for="nome">Nome</label> 
+        <span class="helper-text" data-error="Incorreto" data-success="Correto">Digite o nome do aluno</span>
+      </div>
+      <div>
+        {{ nome.className }}
+      </div>
+    </div>  
+
+    <div class="row">
+      <div class="input-field">
+        <input id="email" name="email" type="text" class="validate" [(ngModel)]="usuario.email" required pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?">
+        <label for="email">Email</label>
+        <span class="helper-text" data-error="Incorreto" data-success="Correto">Digite o email do aluno</span>
+      </div>
+    </div>
+    
+    <button type="submit" class="waves-effect waves-light btn"><i class="material-icons right">send</i>Enviar</button>
+
+  </form>
+</div>  
