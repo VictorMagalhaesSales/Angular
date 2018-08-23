@@ -1,7 +1,7 @@
 import { DropdownService } from './../shared/services/dropdown.service';
 import { EstadoBr } from './../shared/services/estado-br.model';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormControl, FormArray } from '@angular/forms';
 import 'rxjs/add/operator/map';
 import { HttpClient } from '@angular/common/http';
 import { ConsultaCepService } from '../shared/services/consulta-cep.service';
@@ -79,8 +79,24 @@ export class DataFormComponent implements OnInit {
     ])*/
   }
 
+  requiredMinCheckbox(min = 1){
+    const validator = (formArray: FormArray) => {
+      const totalChecked = formArray.controls;
+    };
+  }
+
   onSubmit(){
     console.log(this.formulario);
+
+    let valueSubmit = Object.assign({}, this.formulario.value);
+
+    valueSubmit = Object.assign(valueSubmit, {
+      frameworks: valueSubmit.frameworks
+        .map((v, i) => v ? this.frameworks[i] : null)
+        .filter(v => v !== null)
+    });
+
+    console.log(valueSubmit);
 
     if(this.formulario.valid){
       this.http.post('https://httpbin.org/post', JSON.stringify(this.formulario.value))
