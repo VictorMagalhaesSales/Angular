@@ -3,7 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TemplateFormComponent } from './template-form.component';
-import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -12,7 +12,7 @@ import { HttpModule } from '@angular/http';
   imports: [
     CommonModule,
     FormsModule,
-    HttpModule,
+    HttpClientModule,
     SharedModule
   ],
   exports: [

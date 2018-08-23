@@ -1,23 +1,22 @@
 <div class="row">
-  <form [formGroup]="formulario" (ngSubmit)="onSubmit()" >
+  <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
 
     <h4>Formulário - Dados</h4>
 
     <div class="row col s12">
-        <div class="input-field">
-          <input id="nome" name="nome" type="text" class="validate" formControlName="nome">
-          <label for="nome">Nome</label>
-        </div>
-        <app-campo-control-erro [nome]="'nome'" [teste]="verificaErro('nome')"></app-campo-control-erro>
-    </div>    
+      <div class="input-field">
+        <input id="nome" name="nome" type="text" class="validate" formControlName="nome">
+        <label for="nome">Nome</label>
+      </div>
+      <app-campo-control-erro [nome]="'nome'" [teste]="verificaErro('nome')"></app-campo-control-erro>
+    </div>
 
     <div class="row col s12">
-        <div class="input-field">
-          <input id="email" name="email" type="email" required class="validate" formControlName="email"
-          pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?">
-          <label for="email">Email</label>
-        </div>
-        <app-campo-control-erro [nome]="'email'" [teste]="verificaErro('email')"></app-campo-control-erro>
+      <div class="input-field">
+        <input id="email" name="email" type="email" required class="validate" formControlName="email" pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?">
+        <label for="email">Email</label>
+      </div>
+      <app-campo-control-erro [nome]="'email'" [teste]="verificaErro('email')"></app-campo-control-erro>
     </div>
 
     <div formGroupName="endereco">
@@ -48,7 +47,7 @@
           <app-campo-control-erro [nome]="'complemento'" [teste]="verificaErro('endereco.complemento')"></app-campo-control-erro>
         </div>
 
-      </div> 
+      </div>
 
       <div class="row col s12">
         <div class="input-field">
@@ -70,21 +69,69 @@
           </div>
         </div>
 
-        <div class="col s3">
-          <div class="input-field">
-            <input type="text" name="estado" id="estado" required readonly placeholder="Estado" formControlName="estado">
-          </div>
+        <div class="input-field col s3">
+          <select id="estado" formControlName="estado">
+            <option disabled selected>Escolha a sua opção</option>
+            <option *ngFor="let est of estados" [ngValue]="est.sigla">
+              {{ est.nome }}
+            </option>
+          </select>
         </div>
 
-      </div> 
+      </div>
+    </div>
 
-    </div>  
+    <div class="row">
+
+      <div class="input-field col s3">
+        <select id="cargo" formControlName="cargo" [compareWith]="compararCargos">
+          <option disabled selected>Escolha a sua opção</option>
+          <option *ngFor="let carg of cargos" [ngValue]="carg">
+            {{ carg.desc }}
+          </option>
+        </select>
+      </div>
+
+      <div class="input-field col s3">
+        <select id="tecnologias" formControlName="tecnologias" multiple>
+          <option disabled selected>Escolha a sua opção</option>
+          <option *ngFor="let tecnologia of tecnologias" [value]="tecnologia.nome">
+            {{ tecnologia.desc }}
+          </option>
+        </select>
+      </div>
+
+      <div class="input-field col s3 offset-s1">
+        <div class="newsletter">
+          <label for="newsletter">Deseja receber as novas notícias?</label>
+          <label *ngFor="let news of newsletterOp">
+            <input name="newsletter" id="newsletter" type="radio" formControlName="newsletter" [value]="news.valor" />
+            <span>{{ news.desc }}</span>
+          </label>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="row">
+      <div class="input-field col s5">
+        <label>
+          <input type="checkbox" formControlName="termos"/>
+          <span  [class.checkerro]="verificaErro('termos')">Aceito todos os termos de serviço.</span>
+        </label>
+      </div>
+    </div>
+  <br>
+
 
     <div class="row">
       <button type="submit" class="waves-effect waves-light btn col s4"><i class="material-icons right">send</i>Enviar</button>
-      <button type="button" class="waves-effect waves-light btn col s4 offset-s4" (click)="resetarForm()"><i class="material-icons right">clear</i>Limpar</button>
+      <button type="button" class="waves-effect waves-light btn col s4" (click)="setarCargo()"><i class="material-icons right">save</i>Setar
+        cargo
+      </button>
+      <button type="button" class="waves-effect waves-light btn col s4" (click)="resetarForm()"><i class="material-icons right">clear</i>Limpar</button>
     </div>
-    
+
     <app-form-debug [form]="formulario"></app-form-debug>
   </form>
 </div>
