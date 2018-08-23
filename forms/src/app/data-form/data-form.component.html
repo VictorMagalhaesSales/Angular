@@ -115,13 +115,28 @@
 
     <div class="row">
       <div class="input-field col s5">
+        <div *ngFor="let item of formulario.get('frameworks').controls; let i = index" formArrayName="frameworks">
+            
+          <p>
+            <label>
+              <input type="checkbox" [formControlName]="i"/>
+              <span>{{ frameworks[i] }}</span>
+            </label>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="input-field col s5">
         <label>
-          <input type="checkbox" formControlName="termos"/>
-          <span  [class.checkerro]="verificaErro('termos')">Aceito todos os termos de serviço.</span>
+          <input type="checkbox" formControlName="termos" />
+          <span [class.checkerro]="verificaErro('termos')">Aceito todos os termos de serviço.</span>
         </label>
       </div>
     </div>
-  <br>
+
+    <br>
 
 
     <div class="row">

@@ -1,7 +1,7 @@
 import { DropdownService } from './../shared/services/dropdown.service';
 import { EstadoBr } from './../shared/services/estado-br.model';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import 'rxjs/add/operator/map';
 import { HttpClient } from '@angular/common/http';
 import { ConsultaCepService } from '../shared/services/consulta-cep.service';
@@ -18,6 +18,7 @@ export class DataFormComponent implements OnInit {
   cargos: any[];
   tecnologias: any[];
   newsletterOp: any[];
+  frameworks = ['Angular','React','Vue','Sencha'];
 
   constructor(
     private formBuilder: FormBuilder,
@@ -58,9 +59,24 @@ export class DataFormComponent implements OnInit {
       cargo: [null],
       tecnologias: [null],
       newsletter: [null],
-      termos: [null, Validators.pattern('true')]
+      termos: [null, Validators.pattern('true')],
+      frameworks: this.buildFramkeworks()
     });
 
+  }
+
+  buildFramkeworks(){
+
+    const values = this.frameworks.map(v => new FormControl(false));
+
+    return this.formBuilder.array(values);
+
+    /* this.formBuilder.array([
+      new FormControl(false),
+      new FormControl(false),
+      new FormControl(false),
+      new FormControl(false)
+    ])*/
   }
 
   onSubmit(){
@@ -144,7 +160,10 @@ export class DataFormComponent implements OnInit {
     console.log({ nome: 'Dev', nivel: 'Pleno', desc: 'Dev Pl' });
   }
 
-    compararCargos(obj1, obj2){
-      return obj1 && obj2 ? (obj1.nome === obj2.nome && obj1.nivel === obj2.nivel) : obj1 === obj2;
-    }
+  compararCargos(obj1, obj2){
+    return obj1 && obj2 ? (obj1.nome === obj2.nome && obj1.nivel === obj2.nivel) : obj1 === obj2;
+  }
+
+
+
 }
