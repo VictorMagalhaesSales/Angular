@@ -66,7 +66,6 @@ export class TemplateFormComponent implements OnInit {
     formulario.form.patchValue({
       endereco: {
         cep: dados.cep,
-        complemento: dados.complemento,
         rua: dados.logradouro,
         bairro: dados.bairro,
         cidade: dados.localidade,
