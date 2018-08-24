@@ -1,3 +1,11 @@
-<div class="erro" *ngIf="teste" >
-    <p>O campo {{ nome }} está inválido!</p>
+<div class="erro" *ngIf="teste">
+    <p *ngIf="msg">
+        {{ msg }}
+    </p>
+    <p *ngIf="!msg">
+        O campo {{ nome }} está inválido!
+    </p>
+    <p>
+        <ng-content></ng-content>
+    </p>
 </div>
