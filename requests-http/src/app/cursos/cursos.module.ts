@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { CursosRoutingModule } from './cursos-routing.module';
-import { CursosLitaComponent } from './cursos-lita/cursos-lita.component';
+import { CursosListaComponent } from './cursos-lista/cursos-lista.component';
 
 @NgModule({
   imports: [
@@ -10,7 +10,7 @@ import { CursosLitaComponent } from './cursos-lita/cursos-lita.component';
     CursosRoutingModule
   ],
   declarations: [
-    CursosLitaComponent
+    CursosListaComponent
   ]
 })
 export class CursosModule { }
