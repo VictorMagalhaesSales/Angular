@@ -1,1 +1,25 @@
 http://localhost:3000/cursos
+
+### 
+
+
+POST http://localhost:3000/cursos HTTP/1.1
+content-type: application/json
+
+{
+    "nome": "Victor"
+}
+
+###
+
+PUT http://localhost:3000/cursos/5 HTTP/1.1
+content-type: application/json
+
+{
+    "nome": "Editado"
+}
+
+### 
+
+DELETE  http://localhost:3000/cursos/5 HTTP/1.1
+content-type: application/json

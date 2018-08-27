@@ -1,10 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~bootstrap/dist/css/bootstrap.min.css';
 
+body{
+    background-color: rgba(1,156,169,1);
+    background-image: url("assets/img/ang12.png");
+    background-repeat: no-repeat;
+}
+
 .container {
-    background-color: rgba(255,255,255, .9);
-    margin-top: 3%;
-    height: 650px;
+    background-color: rgba(255,255,255, .8);
+    margin-top: 4%;
+    height: 700px;
     padding: 2%;
 }
 

@@ -1,3 +1,4 @@
+import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -7,7 +8,8 @@ import { CursosListaComponent } from './cursos-lista/cursos-lista.component';
 @NgModule({
   imports: [
     CommonModule,
-    CursosRoutingModule
+    CursosRoutingModule,
+    FormsModule
   ],
   declarations: [
     CursosListaComponent

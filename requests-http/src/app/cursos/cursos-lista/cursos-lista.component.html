@@ -1,6 +1,111 @@
-<div class="container">
-  <p>
-    cursos-lista works!
-  </p>
+<div class="container card"  style="background-color: rgba(255,255,255,.9);">
+  <div class="card-header">
+    <div class="float-left">
+        <p style="font-size: 25px; font-weight: 100; "><b>Sistema de cursos</b></p>
+    </div>
+    <div class="float-right">
+      <button type="button" class="btn btn-success" data-toggle="modal" data-target="#cadastrar">Novo curso</button>
+    </div>
+  </div>
+  <div class="card-body">
+    <table class="table table-hover" *ngIf="cursos$ | async as cursos; else loading" >
+        <tr>
+          <th>#</th>
+          <th>Curso</th>
+          <th></th>
+        </tr>
+        <tr *ngFor="let curso of cursos" >
+          <td>{{ curso.id }}</td>
+          <td>{{ curso.nome }}</td>
+          <td>
+            <div class="float-right">
+              <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#atualizar" (click)="abrirEditar(curso.id,curso.nome)">Atualizar</button>
+              <button class="btn btn-danger btn-sm">Remover</button>
+            </div>
+        </td>
+        </tr>
+    </table>
+
+    <ng-template #loading>
+      <span>Carregando dados...</span>
+    </ng-template>
+  </div>
+  <div class="card-footer text-right">
+  </div>
 </div>
+
+<div class="modal fade" id="atualizar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Editar curso</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <div>
+
+          <div class="form-group">
+              <label for="idcurso">ID do curso</label>
+              <input type="text" readonly id="idcurso" class="form-control" [(ngModel)]="cursoDestaque.id">
+          </div>
+
+          <div class="form-group">
+            <label for="nomecurso">Nome do curso</label>
+            <input type="text" placeholder="Nome do curso" id="nomecurso" class="form-control" [(ngModel)]="cursoDestaque.nome"> 
+          </div>
+          
+        </div>
+        
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-success">Save changes</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="cadastrar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+  
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Novo curso</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+  
+        <div class="modal-body">
+          <div>
+            <div class="form-group">
+                <label for="idcurso">ID do curso</label>
+                <input type="text" id="idcurso" class="form-control" #id>
+            </div>
+  
+            <div class="form-group">
+              <label for="nomecurso">Nome do curso</label>
+              <input type="text" placeholder="Nome do curso" id="nomecurso" class="form-control" #nome> 
+            </div>
+          </div>
+        </div>
+  
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-success" data-dismiss="modal" (click)="cadastrarCurso(id.value,nome.value)" [routerLink]="['/cursos']" >Cadastrar curso</button>
+        </div>
+  
+      </div>
+    </div>
+  </div>
+
+
+  
 
